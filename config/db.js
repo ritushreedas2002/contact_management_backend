@@ -1,25 +1,14 @@
-const mongoose = require("mongoose");
 
-let cachedConnection = null;
+
+const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  if (cachedConnection) {
-    console.log("Using cached database connection");
-    return cachedConnection;
-  }
-
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URL, {
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-    });
-
-    cachedConnection = conn;
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-    return conn;
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log('MongoDB Connected');
   } catch (err) {
     console.error('MongoDB connection error:', err);
-    throw err;
+    process.exit(1); 
   }
 };
 
