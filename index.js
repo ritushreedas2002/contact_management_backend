@@ -6,7 +6,7 @@ const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
 const app = express();
 
-connectDB();
+// connectDB();
 
 const allowedOrigins = [
   "http://localhost:3000",
