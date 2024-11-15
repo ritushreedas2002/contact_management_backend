@@ -29,7 +29,7 @@ exports.createContact = async (req, res) => {
 
   try {
     const newContact = await contact.save();
-    res.status(201).json(newContact);
+    res.status(201).json({message:'Data Added Successfully'});
   } catch (err) {
     if (err.code === 11000) {
       // Duplicate key error
