@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-// const connectDB = require("./config/db");
+const connectDB = require("./config/db");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
@@ -68,7 +68,7 @@ app.get("/", (req, res) => {
 });
 
 // API Routes
-// app.use("/contacts", require("./routes/contactRoutes"));
+app.use("/contacts", require("./routes/contactRoutes"));
 
 app.listen(5000, () => {
   console.log("Server running successfully on port 5000");
